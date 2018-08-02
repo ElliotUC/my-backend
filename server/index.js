@@ -12,6 +12,7 @@ app.use(morgan('dev'));
 app.use(express.json());
 
 // Routes
+app.use('/api/albumBySearch', require('./routes/spotify.routes'));
 
 // Starting the server
 app.listen(app.get('port'), () => {
