@@ -16,17 +16,16 @@ searchAlbumController.getAlbumBySearch = async (req, res) => {
     var data; 
 
     try{
-        console.log("search data")
+        console.log("search data");
         data = await searchAlbumController.searchData(q, accessToken);
     } catch (e) {
         if(e == "Unauthorized") {
+            console.log("get access token and search data");
             accessToken = await authorization.getAccessToken(true);
             data = await searchAlbumController.searchData(q, accessToken);
         }   
     }
-
-    res.json(data);
-   
+    res.json(data);  
 }
 
 searchAlbumController.searchData = async (q, accessToken) => {
@@ -68,7 +67,6 @@ searchAlbumController.searchData = async (q, accessToken) => {
     
           });
     });
-    
 }
 
 module.exports = searchAlbumController;
